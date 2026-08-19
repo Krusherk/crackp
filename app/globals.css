@@ -1,26 +1,558 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f3f3e9;
+  --paper-deep: #e9eadc;
+  --paper-shadow: #d5d6c4;
+  --ink: #27372e;
+  --ink-soft: #3d4c42;
+  --olive: #52652a;
+  --olive-dark: #35471e;
+  --sage: #778264;
+  --muted: #7c806e;
+  --peach: #e7a283;
+  --purple: #6840a8;
+  --hairline: rgba(39, 55, 46, 0.16);
+  --hairline-strong: rgba(39, 55, 46, 0.28);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --radius-lg: 36px;
+  --radius-md: 24px;
+  --radius-sm: 14px;
+  --radius-pill: 999px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-expensive: cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-h: 4.5rem;
+  --mx: 0;
+  --my: 0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-olive: var(--olive);
+  --color-olive-dark: var(--olive-dark);
+  --color-sage: var(--sage);
+  --color-muted: var(--muted);
+  --color-peach: var(--peach);
+  --color-purple: var(--purple);
+  --color-hairline: var(--hairline);
+  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-ibm);
+  --font-pixel: var(--font-pixel);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  scroll-behavior: smooth;
+  cursor: url("/art/fx/cursor.svg") 6 6, auto;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+button,
+[role="button"],
+summary,
+label[for],
+input,
+select,
+textarea {
+  cursor: url("/art/fx/cursor-active.svg") 6 6, pointer;
+}
+
+::selection {
+  background: rgba(82, 101, 42, 0.22);
+  color: var(--ink);
+}
+
+img.pixel,
+.pixel {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+:focus-visible {
+  outline: 1px dashed var(--olive);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Type                                                                */
+/* ------------------------------------------------------------------ */
+
+.display {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+
+.kicker,
+.meta,
+.mono {
+  font-family: var(--font-ibm), ui-monospace, monospace;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.pixel-label {
+  font-family: var(--font-pixel), var(--font-ibm), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.italic-lede {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------------ */
+/* Glass                                                               */
+/* ------------------------------------------------------------------ */
+
+.glass-world {
+  position: relative;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(243, 243, 233, 0.16) 0%,
+      rgba(255, 255, 255, 0.07) 42%,
+      rgba(39, 55, 46, 0.08) 100%
+    );
+  backdrop-filter: blur(18px) saturate(108%);
+  -webkit-backdrop-filter: blur(18px) saturate(108%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -1px 0 rgba(20, 30, 24, 0.08),
+    0 10px 40px rgba(18, 28, 22, 0.12);
+  border-radius: var(--radius-lg);
+}
+
+.glass-world::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    transparent 28%,
+    transparent 100%
+  );
+}
+
+.glass-paper {
+  position: relative;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.42),
+      rgba(243, 243, 233, 0.28) 55%,
+      rgba(233, 234, 220, 0.2)
+    );
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 8px 28px rgba(39, 55, 46, 0.07);
+  border-radius: var(--radius-md);
+}
+
+.nav-shell {
+  background: rgba(243, 243, 233, 0.62);
+  backdrop-filter: blur(22px) saturate(115%);
+  -webkit-backdrop-filter: blur(22px) saturate(115%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 10px 30px rgba(39, 55, 46, 0.1),
+    0 2px 6px rgba(39, 55, 46, 0.05);
+}
+
+/* ------------------------------------------------------------------ */
+/* Hairlines / stamps                                                  */
+/* ------------------------------------------------------------------ */
+
+.hairline {
+  border: 1px solid var(--hairline);
+}
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-ibm), ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--hairline);
+  padding: 0.35rem 0.55rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+/* ------------------------------------------------------------------ */
+/* Grain                                                               */
+/* ------------------------------------------------------------------ */
+
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0.038;
+  background-image: url("/art/fx/grain.png");
+  background-size: 180px 180px;
+  mix-blend-mode: multiply;
+}
+
+/* ------------------------------------------------------------------ */
+/* Parallax                                                            */
+/* ------------------------------------------------------------------ */
+
+.parallax-far {
+  transform: translate3d(calc(var(--mx) * -2px), calc(var(--my) * -2px), 0);
+}
+
+.parallax-mid {
+  transform: translate3d(calc(var(--mx) * 5px), calc(var(--my) * 3px), 0);
+}
+
+.parallax-near {
+  transform: translate3d(calc(var(--mx) * 8px), calc(var(--my) * 5px), 0);
+}
+
+.life-scene {
+  transform: translate3d(calc(var(--mx) * 6px), calc(var(--my) * 4px), 0) scale(1.04);
+  transition: transform 900ms var(--ease-expensive);
+}
+
+/* ------------------------------------------------------------------ */
+/* Path cards                                                          */
+/* ------------------------------------------------------------------ */
+
+.path-card {
+  min-height: 22rem;
+  transition:
+    transform 500ms var(--ease-expensive),
+    background 500ms ease,
+    border-color 500ms ease,
+    box-shadow 500ms ease;
+  will-change: transform;
+}
+
+.path-card .path-bg {
+  transition: transform 700ms var(--ease-expensive), filter 500ms ease;
+}
+
+.path-card .path-arrow {
+  transition: transform 500ms var(--ease-expensive);
+}
+
+.path-card .path-title {
+  transition: transform 500ms var(--ease-expensive);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .path-card:hover {
+    transform: translateY(-3px);
+    background:
+      linear-gradient(
+        145deg,
+        rgba(243, 243, 233, 0.28) 0%,
+        rgba(255, 255, 255, 0.12) 50%,
+        rgba(39, 55, 46, 0.06) 100%
+      );
+    border-color: rgba(255, 255, 255, 0.46);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 14px 40px rgba(18, 28, 22, 0.14);
+  }
+
+  .path-card:hover .path-bg {
+    transform: translate3d(6px, -4px, 0) scale(1.03);
+    filter: saturate(1.05);
+  }
+
+  .path-card:hover .path-arrow {
+    transform: translateX(8px);
+  }
+
+  .path-card:hover .path-title {
+    transform: translateX(4px);
+  }
+
+  .path-card:active {
+    transform: translateY(-1px) scale(0.985);
+  }
+
+  .artifact-photo:hover img,
+  .artifact-photo:hover .visual {
+    transform: scale(1.018);
+  }
+}
+
+.path-card:active .path-arrow {
+  transform: translateX(4px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Reveal                                                              */
+/* ------------------------------------------------------------------ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: rise 900ms var(--ease-expensive) forwards;
+}
+
+.reveal-d1 { animation-delay: 80ms; }
+.reveal-d2 { animation-delay: 160ms; }
+.reveal-d3 { animation-delay: 240ms; }
+.reveal-d4 { animation-delay: 320ms; }
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% { transform: translate3d(0, 0, 0); opacity: 0.85; }
+  50% { transform: translate3d(2px, -3px, 0); opacity: 1; }
+}
+
+@keyframes blink {
+  0%,
+  100% { opacity: 0.2; }
+  40% { opacity: 1; }
+  55% { opacity: 0.35; }
+}
+
+@keyframes glow {
+  0%,
+  100% { filter: drop-shadow(0 0 6px rgba(240, 97, 4, 0.25)); }
+  50% { filter: drop-shadow(0 0 14px rgba(246, 234, 125, 0.45)); }
+}
+
+@keyframes fire-pulse {
+  0%,
+  100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.03) translateY(-2px); }
+}
+
+.sparkle {
+  animation: drift 6.5s ease-in-out infinite;
+}
+
+.sparkle-blink {
+  animation: blink 3.8s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Contribution graph                                                  */
+/* ------------------------------------------------------------------ */
+
+.contrib-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: rgba(39, 55, 46, 0.08);
+}
+
+.contrib-cell[data-level="1"] { background: #c9d2b3; }
+.contrib-cell[data-level="2"] { background: #9aa978; }
+.contrib-cell[data-level="3"] { background: #6b7c42; }
+.contrib-cell[data-level="4"] { background: #3e5224; }
+
+.contrib-cell:hover,
+.contrib-cell:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 1px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Inventory                                                           */
+/* ------------------------------------------------------------------ */
+
+.inventory-page {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      rgba(39, 55, 46, 0.045) 28px
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(233, 234, 220, 0.2));
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.tech-row {
+  transition: background 280ms ease, transform 400ms var(--ease-expensive);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tech-row:hover {
+    background: rgba(82, 101, 42, 0.08);
+    transform: translateX(3px);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Section rhythm                                                      */
+/* ------------------------------------------------------------------ */
+
+.section-pad {
+  padding-block: clamp(6rem, 14vw, 12rem);
+}
+
+.rule {
+  height: 1px;
+  background: var(--hairline);
+  border: 0;
+}
+
+.world-vignette {
+  background:
+    radial-gradient(120% 80% at 50% 20%, transparent 40%, rgba(15, 24, 20, 0.28) 100%),
+    linear-gradient(180deg, rgba(15, 24, 20, 0.12) 0%, transparent 22%, transparent 72%, rgba(15, 24, 20, 0.35) 100%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Visual artifacts                                                    */
+/* ------------------------------------------------------------------ */
+
+.artifact-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid var(--hairline);
+  background: var(--paper-deep);
+}
+
+.artifact-photo img,
+.artifact-photo .visual {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease-expensive);
+}
+
+.artifact-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 30%),
+    url("/art/fx/grain.png");
+  background-size: auto, 140px;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+}
+
+/* ------------------------------------------------------------------ */
+/* Nav pill                                                            */
+/* ------------------------------------------------------------------ */
+
+.nav-pill {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  background: var(--olive);
+  border-radius: var(--radius-pill);
+  transition:
+    left 480ms var(--ease-expensive),
+    width 480ms var(--ease-expensive);
+  z-index: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion / transparency                                       */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .path-card,
+  .path-card .path-bg,
+  .path-card .path-arrow,
+  .path-card .path-title,
+  .life-scene,
+  .parallax-far,
+  .parallax-mid,
+  .parallax-near,
+  .sparkle,
+  .sparkle-blink,
+  .nav-pill,
+  .artifact-photo img,
+  .artifact-photo .visual,
+  .tech-row {
+    animation: none !important;
+    transition: opacity 200ms ease, background 200ms ease, color 200ms ease !important;
+    transform: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-world,
+  .glass-paper,
+  .nav-shell {
+    backdrop-filter: none;
+    background: rgba(243, 243, 233, 0.92);
+  }
+}
+
+@media (max-width: 720px) {
+  .path-card { min-height: 16rem; }
+  .contrib-cell { width: 8px; height: 8px; }
 }

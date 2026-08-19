@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Field Journal
 
-## Getting Started
-
-First, run the development server:
+Harshit’s developer portfolio — a pixel-art field journal rendered as a modern editorial site.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Place your background
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Drop your own pixel-art landscape here:
 
-## Learn More
+```
+public/art/world/life-bg.png
+```
 
-To learn more about Next.js, take a look at the following resources:
+PNG or JPG. Landscape (16:9) reads best on desktop; the image is cropped with `object-cover`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A default waterfall scene is already in that slot so the site runs immediately.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Optional extras:
 
-## Deploy on Vercel
+| File | Used for |
+| --- | --- |
+| `public/art/world/life-bg.png` | Hero / The Life |
+| `public/art/world/mountain-bg.jpg` | Quiet atmosphere in The Work |
+| `public/art/world/camp-bg.png` | Rest at the Camp |
+| `public/resume.pdf` | “View Resume” at camp |
+| `public/audio/camp.mp3` | unused — ambience is generated in the browser |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The music control in the navigation bar synthesizes a quiet camp drone. It never autoplays.
