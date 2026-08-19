@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { art } from "@/data/site";
-
 export function MusicControl() {
   const [on, setOn] = useState(false);
   const ctxRef = useRef<AudioContext | null>(null);
@@ -94,11 +92,24 @@ export function MusicControl() {
       aria-label={on ? "Mute camp ambience" : "Play camp ambience"}
       className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-transform duration-160 ease-out hover:bg-[rgba(82,101,42,0.08)] active:scale-[0.97]"
     >
-      <img src={art.note} alt="" width={14} height={14} className="pixel" />
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 12 12"
+        className="pixel"
+        aria-hidden
+        shapeRendering="crispEdges"
+      >
+        <rect x="8" y="1" width="2" height="6" fill="currentColor" />
+        <rect x="7" y="2" width="1" height="1" fill="currentColor" />
+        <rect x="6" y="3" width="1" height="1" fill="currentColor" />
+        <rect x="3" y="7" width="4" height="3" fill="currentColor" />
+        <rect x="2" y="8" width="1" height="2" fill="currentColor" />
+      </svg>
       {!on && (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-y-3 right-2 w-px rotate-[-32deg] bg-ink/50"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[14px] w-px -translate-x-1/2 -translate-y-1/2 rotate-[-32deg] bg-current"
         />
       )}
     </button>

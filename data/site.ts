@@ -1,16 +1,19 @@
 export const site = {
-  name: "Harshit",
-  fullName: "Harshit Gupta",
-  title: "Harshit — Backend & Full-Stack Developer",
+  name: "Crack",
+  fullName: "Crack",
+  title: "Crack — Backend engineer & founder of Lumma",
   description:
-    "Backend-focused full-stack engineer building scalable systems, AI applications, and beautiful digital experiences.",
-  email: "harshit@hrsht.me",
-  github: "https://github.com/hrshtdotme",
-  githubHandle: "hrshtdotme",
-  linkedin: "https://www.linkedin.com/in/hrshtdotme",
-  x: "https://x.com/hrshtdotme",
-  resume: "/resume.pdf",
-  url: "https://hrsht.me",
+    "Backend-focused indie founder. Building Lumma, a stablecoin finance app on Arc Network. Python, Rust, and the quiet work of shipping.",
+  email: "qowiyy@lumma.xyz",
+  github: "https://github.com/Krusherk",
+  githubHandle: "Krusherk",
+  linkedin: "",
+  x: "https://x.com/0xqowiyy",
+  xHandle: "0xqowiyy",
+  lumma: "https://lumma.xyz",
+  lummaX: "https://x.com/lummaxyz",
+  resume: "",
+  url: "https://crack.is-a.dev",
 } as const;
 
 export const art = {

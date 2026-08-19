@@ -37,7 +37,7 @@ export function RepositoryCard({ repo }: { repo: Repository }) {
 
       <h3 className="display mt-8 text-[2rem] leading-[0.95] md:text-[2.4rem]">{repo.name}</h3>
       <p className="italic-lede mt-1 text-lg">{repo.subtitle}</p>
-      <p className="mt-4 max-w-prose text-[0.98rem] leading-relaxed text-ink-soft">
+      <p className="mt-4 max-w-prose text-[0.98rem] leading-relaxed text-ink/70">
         {repo.description}
       </p>
 

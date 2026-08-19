@@ -11,7 +11,7 @@ export function LifeSection() {
   return (
     <section
       id="life"
-      className="relative isolate min-h-[100svh] overflow-hidden text-[var(--paper)]"
+      className="relative isolate min-h-[100dvh] overflow-hidden bg-[#16304a] text-[var(--paper)]"
     >
       <div className="absolute inset-[-4%] life-scene">
         <img
@@ -21,6 +21,8 @@ export function LifeSection() {
         />
       </div>
       <div className="world-vignette absolute inset-0" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black/35 via-black/10 to-transparent md:h-40 md:from-black/20" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-10 bg-gradient-to-b from-transparent to-[var(--paper)] md:h-16" />
 
       <PixelSparkle className="absolute left-[12%] top-[18%]" delay="0.4s" />
       <PixelSparkle kind="plus" className="absolute right-[18%] top-[28%]" delay="1.2s" size={5} />
@@ -31,21 +33,21 @@ export function LifeSection() {
         size={7}
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[78rem] flex-col justify-between px-6 pb-32 pt-16 md:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-[78rem] flex-col justify-between px-6 pb-36 pt-16 md:px-10 lg:px-16">
         <div className="max-w-xl reveal">
-          <p className="pixel-label text-paper/70">Save point · 00</p>
-          <h1 className="display mt-6 text-[clamp(3.2rem,8vw,7.2rem)] text-paper">
-            Hi, I&apos;m Harshit
+          <p className="pixel-label text-paper/80">Save point · 00</p>
+          <h1 className="display mt-6 text-[clamp(3.2rem,8vw,7.2rem)] text-paper [text-shadow:0_2px_24px_rgba(10,20,16,0.45)]">
+            Hi, I&apos;m Crack
           </h1>
-          <p className="italic-lede mt-5 text-[1.2rem] text-paper/85 md:text-[1.45rem]">
-            A backend-focused full-stack developer.
+          <p className="italic-lede mt-5 text-[1.2rem] text-paper/90 md:text-[1.45rem] [text-shadow:0_1px_12px_rgba(10,20,16,0.4)]">
+            A backend-focused indie founder. Building Lumma.
           </p>
         </div>
 
         <div className="reveal reveal-d2">
           <div className="mb-8 flex items-center gap-5">
             <span className="h-px flex-1 bg-paper/25" />
-            <p className="pixel-label text-paper/75">Choose your path</p>
+            <p className="pixel-label text-paper/85">Choose your path</p>
             <span className="h-px flex-1 bg-paper/25" />
           </div>
 

@@ -7,6 +7,7 @@ import {
   monthLabels,
   type DayCell,
 } from "@/data/contributions";
+import { site } from "@/data/site";
 import { formatDay, plural } from "@/lib/format";
 
 export function ContributionGraph() {
@@ -29,15 +30,15 @@ export function ContributionGraph() {
     <div className="relative">
       <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
         <p className="italic-lede text-lg">
-          {contributionTotal.toLocaleString()} contributions in the last year
+          A field sketch of the last year — {contributionTotal.toLocaleString()} marks on the trail
         </p>
         <a
-          href="https://github.com/hrshtdotme"
+          href={site.github}
           className="mono text-[0.62rem] text-olive hover:underline"
           target="_blank"
           rel="noreferrer"
         >
-          @hrshtdotme
+          @{site.githubHandle}
         </a>
       </div>
 

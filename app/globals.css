@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import "@fontsource/fraunces/latin-300.css";
+@import "@fontsource/fraunces/latin-400.css";
+@import "@fontsource/fraunces/latin-400-italic.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/pixelify-sans/400.css";
 
 :root {
   --paper: #f3f3e9;
@@ -25,6 +30,9 @@
   --nav-h: 4.5rem;
   --mx: 0;
   --my: 0;
+  --font-fraunces: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-ibm: "IBM Plex Mono", ui-monospace, "Cascadia Code", monospace;
+  --font-pixel: "Pixelify Sans", "IBM Plex Mono", ui-monospace, monospace;
 }
 
 @theme inline {
@@ -54,6 +62,7 @@ html {
   background: var(--paper);
   color: var(--ink);
   scroll-behavior: smooth;
+  scroll-padding-bottom: 6rem;
   cursor: url("/art/fx/cursor.svg") 6 6, auto;
 }
 
@@ -108,7 +117,7 @@ img.pixel,
 
 .display {
   font-family: var(--font-fraunces), serif;
-  font-weight: 400;
+  font-weight: 300;
   font-optical-sizing: auto;
   letter-spacing: -0.03em;
   line-height: 0.92;
@@ -138,7 +147,6 @@ img.pixel,
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0.01em;
-  color: var(--ink-soft);
 }
 
 /* ------------------------------------------------------------------ */
@@ -445,7 +453,7 @@ img.pixel,
 /* ------------------------------------------------------------------ */
 
 .section-pad {
-  padding-block: clamp(6rem, 14vw, 12rem);
+  padding-block: clamp(5.5rem, 10vw, 9.5rem);
 }
 
 .rule {

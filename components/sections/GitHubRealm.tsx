@@ -17,7 +17,7 @@ export function GitHubRealm() {
         <SectionHeader
           kicker="Another clearing"
           title="GitHub Realm"
-          lede="A glimpse into my open-source contributions and pinned projects."
+          lede="The public notes for Lumma and whatever else leaves camp."
         />
 
         <div className="glass-paper mt-16 p-6 md:p-10">

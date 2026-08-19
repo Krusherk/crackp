@@ -20,7 +20,7 @@ export function ProjectArtifact({ project }: { project: Project }) {
           {project.title}
         </h3>
         <p className="italic-lede mt-2 text-xl">{project.subtitle}</p>
-        <p className="mt-6 max-w-md text-[1.02rem] leading-relaxed text-ink-soft">
+        <p className="mt-6 max-w-md text-[1.02rem] leading-relaxed text-ink/70">
           {project.description}
         </p>
         <ul className="mt-5 space-y-1">

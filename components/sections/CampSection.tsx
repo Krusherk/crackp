@@ -4,8 +4,8 @@ import { PixelSparkle } from "@/components/PixelSparkle";
 const contacts = [
   { label: "Email", value: site.email, href: `mailto:${site.email}` },
   { label: "GitHub", value: `@${site.githubHandle}`, href: site.github },
-  { label: "LinkedIn", value: "/in/hrshtdotme", href: site.linkedin },
-  { label: "X", value: `@${site.githubHandle}`, href: site.x },
+  { label: "X", value: `@${site.xHandle}`, href: site.x },
+  { label: "Lumma", value: "lumma.xyz", href: site.lumma },
 ];
 
 export function CampSection() {
@@ -60,12 +60,14 @@ export function CampSection() {
               style={{ filter: "drop-shadow(0 0 18px rgba(240,97,4,0.45))" }}
             />
             <p className="pixel-label mt-3 text-paper/60">Campfire</p>
-            <a
-              href={site.resume}
-              className="mt-8 rounded-full border border-white/30 px-5 py-2 font-[family-name:var(--font-ibm)] text-[0.65rem] uppercase tracking-[0.18em] text-paper/90 transition-colors hover:bg-white/10"
-            >
-              View Resume
-            </a>
+            {site.resume ? (
+              <a
+                href={site.resume}
+                className="mt-8 rounded-full border border-white/30 px-5 py-2 font-[family-name:var(--font-ibm)] text-[0.65rem] uppercase tracking-[0.18em] text-paper/90 transition-colors hover:bg-white/10"
+              >
+                View Resume
+              </a>
+            ) : null}
           </div>
         </div>
 

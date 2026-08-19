@@ -13,7 +13,7 @@ export function WorkSection() {
       <img
         src={art.mountainBg}
         alt=""
-        className="pixel parallax-far pointer-events-none absolute -right-24 top-0 h-[70vh] w-auto opacity-[0.18] mix-blend-multiply"
+        className="pixel parallax-far pointer-events-none absolute -right-10 top-24 h-[62vh] w-auto opacity-[0.22] mix-blend-multiply [mask-image:linear-gradient(90deg,transparent,black_18%)]"
         aria-hidden
       />
 
@@ -21,7 +21,7 @@ export function WorkSection() {
         <SectionHeader
           kicker="Field note · 01"
           title="Build Log"
-          lede="A selection of some of my finest projects."
+          lede="The expedition is Lumma. Everything else is a module on the same trail."
         />
 
         <div className="mt-24 space-y-28 md:mt-32 md:space-y-36">
@@ -40,7 +40,7 @@ export function WorkSection() {
           <SectionHeader
             kicker="Guilds"
             title="Quest Log"
-            lede="My work experience and previous guild affiliations."
+            lede="The current guild. More stamps when they exist."
           />
 
           <ol className="mt-20 space-y-20">
@@ -68,7 +68,7 @@ export function WorkSection() {
                   <p className="mono mt-3 text-[0.62rem]">
                     {q.tenure} · {q.place}
                   </p>
-                  <ul className="mt-6 max-w-2xl space-y-3 text-[1.02rem] leading-relaxed text-ink-soft">
+                  <ul className="mt-6 max-w-2xl space-y-3 text-[1.02rem] leading-relaxed text-ink/70">
                     {q.notes.map((n) => (
                       <li key={n} className="flex gap-3">
                         <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 bg-olive" />

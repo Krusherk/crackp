@@ -56,8 +56,8 @@ export function Navigation() {
       aria-label="World"
       className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-[max(1.1rem,env(safe-area-inset-bottom))]"
     >
-      <div className="nav-shell pointer-events-auto flex max-w-[min(100%,42rem)] items-center gap-1 rounded-full px-2 py-1.5 pl-2 pr-1.5">
-        <div ref={wrapRef} className="relative flex min-w-0 items-center overflow-x-auto">
+      <div className="nav-shell pointer-events-auto flex w-full max-w-[min(100%,42rem)] items-center gap-1 rounded-full px-1.5 py-1.5 sm:px-2">
+        <div ref={wrapRef} className="relative flex min-w-0 flex-1 items-center overflow-x-auto">
           <span
             className="nav-pill"
             style={{ left: pill.left, width: pill.width }}
@@ -73,7 +73,7 @@ export function Navigation() {
                   btnRefs.current[item.id] = node;
                 }}
                 className={cn(
-                  "relative z-10 whitespace-nowrap rounded-full px-4 py-2.5 font-[family-name:var(--font-fraunces)] text-[0.95rem] tracking-[-0.01em] transition-colors duration-500",
+                  "relative z-10 whitespace-nowrap rounded-full px-3 py-2 font-[family-name:var(--font-fraunces)] text-[0.88rem] tracking-[-0.01em] transition-colors duration-500 sm:px-4 sm:py-2.5 sm:text-[0.95rem]",
                   isActive ? "text-[var(--paper)]" : "text-ink/80 hover:text-ink",
                 )}
               >

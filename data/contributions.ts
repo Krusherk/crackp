@@ -13,13 +13,12 @@ function hash(n: number) {
 }
 
 function countFor(index: number, weekday: number) {
-  const wave = 0.45 + 0.55 * hash(index * 0.17);
-  const weekend = weekday === 0 || weekday === 6 ? 0.35 : 1;
-  const burst =
-    hash(Math.floor(index / 9)) > 0.82 ? 1.8 : hash(Math.floor(index / 4)) > 0.7 ? 1.25 : 1;
-  const raw = hash(index + 9) * 14 * wave * weekend * burst;
-  if (raw < 0.55) return 0;
-  return Math.min(27, Math.round(raw));
+  const wave = 0.25 + 0.4 * hash(index * 0.17);
+  const weekend = weekday === 0 || weekday === 6 ? 0.2 : 1;
+  const burst = hash(Math.floor(index / 11)) > 0.88 ? 1.5 : 1;
+  const raw = hash(index + 19) * 7 * wave * weekend * burst;
+  if (raw < 0.7) return 0;
+  return Math.min(12, Math.round(raw));
 }
 
 function levelFor(count: number): DayCell["level"] {

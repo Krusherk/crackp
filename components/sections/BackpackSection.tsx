@@ -19,7 +19,7 @@ export function BackpackSection() {
         <SectionHeader
           kicker="Inventory"
           title="From the Backpack"
-          lede="Everything I need to build modern, scalable, and beautiful full-stack applications."
+          lede="Python and TypeScript in the main pouch. Rust and DevOps still being packed."
         />
 
         <div className="mt-6 flex items-baseline justify-between gap-6">
@@ -49,7 +49,7 @@ export function BackpackSection() {
                 active && "translate-y-[-4px]",
               )}
             />
-            <p className="italic-lede mt-8 text-center text-[1.05rem]">
+            <p className="italic-lede mt-8 text-center text-[1.05rem] text-ink/70">
               {hovered ? hovered.note : current.fieldNote}
             </p>
           </div>

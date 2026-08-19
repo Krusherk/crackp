@@ -40,7 +40,7 @@ export function SectionHeader({
             "italic-lede mt-6 max-w-xl text-[1.2rem] leading-relaxed md:text-[1.35rem]",
             align === "center" && "mx-auto",
             align === "right" && "ml-auto",
-            invert ? "text-paper/80" : "text-ink-soft",
+            invert ? "text-paper/80" : "text-ink/70",
           )}
         >
           {lede}

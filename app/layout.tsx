@@ -1,30 +1,9 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, Pixelify_Sans } from "next/font/google";
 import { GrainOverlay } from "@/components/GrainOverlay";
 import { MouseWorld } from "@/components/MouseWorld";
 import { Navigation } from "@/components/Navigation";
 import { site } from "@/data/site";
 import "./globals.css";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
-const ibm = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-ibm",
-  display: "swap",
-});
-
-const pixel = Pixelify_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-pixel",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -42,17 +21,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
-    creator: "@hrshtdotme",
+    creator: "@0xqowiyy",
   },
   icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${ibm.variable} ${pixel.variable} h-full`}
-    >
+    <html lang="en" className="h-full">
       <body className="min-h-full bg-paper text-ink antialiased">
         <a
           href="#work"

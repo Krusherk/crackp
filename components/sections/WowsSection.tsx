@@ -11,7 +11,7 @@ export function WowsSection() {
           <SectionHeader
             kicker="Level 03"
             title="The Wows"
-            lede="Numbers treated as artifacts. Moments that still feel a little impossible."
+            lede="Not trophies. The choices that still feel like the point of the trip."
           />
         </div>
 
@@ -36,7 +36,7 @@ export function WowsSection() {
           <div>
             <p className="pixel-label text-muted">Side quests</p>
             <h3 className="display mt-4 text-4xl md:text-5xl">Detours</h3>
-            <ul className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-ink-soft">
+            <ul className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-ink/70">
               {sideQuests.map((s) => (
                 <li key={s} className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-peach" />
@@ -48,7 +48,7 @@ export function WowsSection() {
           <div>
             <p className="pixel-label text-muted">Quest rewards</p>
             <h3 className="display mt-4 text-4xl md:text-5xl">Marks</h3>
-            <ul className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-ink-soft">
+            <ul className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-ink/70">
               {questRewards.map((s) => (
                 <li key={s} className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-olive" />
