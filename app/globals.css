@@ -1,9 +1,8 @@
 @import "tailwindcss";
-@import "@fontsource/fraunces/latin-300.css";
-@import "@fontsource/fraunces/latin-400.css";
-@import "@fontsource/fraunces/latin-400-italic.css";
-@import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/pixelify-sans/400.css";
+@import "@fontsource/pixelify-sans/500.css";
+@import "@fontsource/pixelify-sans/600.css";
+@import "@fontsource/pixelify-sans/700.css";
 
 :root {
   --paper: #f3f3e9;
@@ -30,9 +29,9 @@
   --nav-h: 4.5rem;
   --mx: 0;
   --my: 0;
-  --font-fraunces: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
-  --font-ibm: "IBM Plex Mono", ui-monospace, "Cascadia Code", monospace;
-  --font-pixel: "Pixelify Sans", "IBM Plex Mono", ui-monospace, monospace;
+  --font-fraunces: "Pixelify Sans", ui-monospace, "Cascadia Code", monospace;
+  --font-ibm: "Pixelify Sans", ui-monospace, "Cascadia Code", monospace;
+  --font-pixel: "Pixelify Sans", ui-monospace, "Cascadia Code", monospace;
 }
 
 @theme inline {
@@ -63,7 +62,6 @@ html {
   color: var(--ink);
   scroll-behavior: smooth;
   scroll-padding-bottom: 6rem;
-  cursor: url("/art/fx/cursor.svg") 6 6, auto;
 }
 
 html,
@@ -75,11 +73,11 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-family: var(--font-pixel), ui-monospace, "Cascadia Code", monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   line-height: 1.55;
-  letter-spacing: 0.005em;
+  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -92,7 +90,11 @@ label[for],
 input,
 select,
 textarea {
-  cursor: url("/art/fx/cursor-active.svg") 6 6, pointer;
+  cursor: pointer;
+}
+
+body * {
+  letter-spacing: 0 !important;
 }
 
 ::selection {
@@ -116,37 +118,37 @@ img.pixel,
 /* ------------------------------------------------------------------ */
 
 .display {
-  font-family: var(--font-fraunces), serif;
-  font-weight: 300;
+  font-family: var(--font-pixel), ui-monospace, monospace;
+  font-weight: 600;
   font-optical-sizing: auto;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   line-height: 0.92;
 }
 
 .kicker,
 .meta,
 .mono {
-  font-family: var(--font-ibm), ui-monospace, monospace;
-  font-weight: 400;
-  letter-spacing: 0.14em;
+  font-family: var(--font-pixel), ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0;
   text-transform: uppercase;
   font-size: 0.6875rem;
   color: var(--muted);
 }
 
 .pixel-label {
-  font-family: var(--font-pixel), var(--font-ibm), monospace;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-size: 0.6875rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .italic-lede {
-  font-family: var(--font-fraunces), serif;
-  font-style: italic;
+  font-family: var(--font-pixel), ui-monospace, monospace;
+  font-style: normal;
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 /* ------------------------------------------------------------------ */
@@ -226,9 +228,9 @@ img.pixel,
 .stamp {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-ibm), ui-monospace, monospace;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-size: 0.625rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ink-soft);
   border: 1px solid var(--hairline);

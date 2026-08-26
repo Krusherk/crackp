@@ -1,9 +1,9 @@
 export const site = {
   name: "Crack",
   fullName: "Crack",
-  title: "Crack — Backend engineer & founder of Lumma",
+  title: "Crack — Backend engineer",
   description:
-    "Backend-focused indie founder. Building Lumma, a stablecoin finance app on Arc Network. Python, Rust, and the quiet work of shipping.",
+    "Backend-focused builder working with Python, TypeScript, Rust, and practical product systems.",
   email: "qowiyy@lumma.xyz",
   github: "https://github.com/Krusherk",
   githubHandle: "Krusherk",
@@ -37,10 +37,10 @@ export const art = {
 } as const;
 
 export const navItems = [
-  { id: "life", label: "The Life" },
-  { id: "work", label: "The Work" },
-  { id: "wows", label: "The Wows" },
-  { id: "info", label: "The Info" },
+  { id: "life", label: "About" },
+  { id: "work", label: "Work" },
+  { id: "stack", label: "Stack" },
+  { id: "contact", label: "Contact" },
 ] as const;
 
 export type NavId = (typeof navItems)[number]["id"];

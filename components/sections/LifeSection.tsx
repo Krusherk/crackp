@@ -2,9 +2,9 @@ import { art } from "@/data/site";
 import { PixelSparkle } from "@/components/PixelSparkle";
 
 const paths = [
-  { n: "01", href: "#life", title: "The Life", hint: "Where the camp is pitched." },
-  { n: "02", href: "#work", title: "The Work", hint: "Artifacts from the trail." },
-  { n: "03", href: "#wows", title: "The Wows", hint: "You should check this out." },
+  { n: "01", href: "#work", title: "Work", hint: "The main thing shipping now." },
+  { n: "02", href: "#backpack", title: "Stack", hint: "The tools I actually use." },
+  { n: "03", href: "#camp", title: "Contact", hint: "Fast ways to reach me." },
 ];
 
 export function LifeSection() {
@@ -35,19 +35,19 @@ export function LifeSection() {
 
       <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-[78rem] flex-col justify-between px-6 pb-36 pt-16 md:px-10 lg:px-16">
         <div className="max-w-xl reveal">
-          <p className="pixel-label text-paper/80">Save point · 00</p>
+          <p className="pixel-label text-paper/80">Portfolio · 00</p>
           <h1 className="display mt-6 text-[clamp(3.2rem,8vw,7.2rem)] text-paper [text-shadow:0_2px_24px_rgba(10,20,16,0.45)]">
             Hi, I&apos;m Crack
           </h1>
           <p className="italic-lede mt-5 text-[1.2rem] text-paper/90 md:text-[1.45rem] [text-shadow:0_1px_12px_rgba(10,20,16,0.4)]">
-            A backend-focused indie founder. Building Lumma.
+            Backend engineer shipping Lumma. Python and TypeScript now, Rust and DevOps getting sharper every week.
           </p>
         </div>
 
         <div className="reveal reveal-d2">
           <div className="mb-8 flex items-center gap-5">
             <span className="h-px flex-1 bg-paper/25" />
-            <p className="pixel-label text-paper/85">Choose your path</p>
+            <p className="pixel-label text-paper/85">Start here</p>
             <span className="h-px flex-1 bg-paper/25" />
           </div>
 

@@ -10,7 +10,6 @@ export function MusicControl() {
 
   useEffect(() => {
     return () => stop();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function stop() {
@@ -89,7 +88,7 @@ export function MusicControl() {
       type="button"
       onClick={toggle}
       aria-pressed={on}
-      aria-label={on ? "Mute camp ambience" : "Play camp ambience"}
+      aria-label={on ? "Mute ambient sound" : "Play ambient sound"}
       className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-transform duration-160 ease-out hover:bg-[rgba(82,101,42,0.08)] active:scale-[0.97]"
     >
       <svg

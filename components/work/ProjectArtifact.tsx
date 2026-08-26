@@ -37,28 +37,30 @@ export function ProjectArtifact({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-        <div className="mt-7 flex flex-wrap gap-6 font-[family-name:var(--font-ibm)] text-[0.68rem] uppercase tracking-[0.16em]">
-          {project.github && (
-            <a
-              href={project.github}
-              className="text-ink/70 transition-colors hover:text-olive"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Repository →
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              className="text-ink/70 transition-colors hover:text-olive"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Live trail →
-            </a>
-          )}
-        </div>
+        {(project.github || project.live) && (
+          <div className="mt-7 flex flex-wrap gap-6 font-[family-name:var(--font-ibm)] text-[0.68rem] uppercase tracking-[0.16em]">
+            {project.github && (
+              <a
+                href={project.github}
+                className="text-ink/70 transition-colors hover:text-olive"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Repository →
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                className="text-ink/70 transition-colors hover:text-olive"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Live site →
+              </a>
+            )}
+          </div>
+        )}
       </div>
 
       <div

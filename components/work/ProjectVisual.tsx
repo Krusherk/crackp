@@ -42,17 +42,17 @@ const grid = {
 function RagSketch() {
   return (
     <div className="absolute inset-8 flex flex-col gap-3 font-[family-name:var(--font-ibm)] text-[10px] tracking-wider text-paper/80">
-      <span className="text-peach">INGEST · DRIVE</span>
+      <span className="text-peach">PORTFOLIO · PIXEL UI</span>
       <div className="h-px w-2/3 bg-paper/20" />
-      {["quarterly.pdf", "notes.md", "spec.docx"].map((f, i) => (
+      {["hero.tsx", "work-card.tsx", "stack-panel.tsx"].map((f, i) => (
         <div key={f} className="flex items-center gap-3" style={{ opacity: 1 - i * 0.18 }}>
           <span className="inline-block h-1.5 w-1.5 bg-olive" />
           <span>{f}</span>
-          <span className="ml-auto text-paper/40">→ qdrant</span>
+          <span className="ml-auto text-paper/40">→ page</span>
         </div>
       ))}
       <div className="mt-auto max-w-[16rem] rounded-sm border border-white/15 p-3 text-[11px] leading-relaxed text-paper/70">
-        “Where did we leave the scaling notes?”
+        fast scan, clear links, no resume wall
       </div>
     </div>
   );
@@ -73,7 +73,7 @@ function TradeSketch() {
         />
       ))}
       <span className="absolute left-8 top-8 font-[family-name:var(--font-ibm)] text-[10px] tracking-[0.2em] text-paper/60">
-        BTC-PERP  ·  64µs
+        BALANCE · SEND · SWAP
       </span>
     </div>
   );

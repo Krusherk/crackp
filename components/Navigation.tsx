@@ -8,10 +8,15 @@ import { cn } from "@/lib/cn";
 const sectionToNav: Record<string, NavId> = {
   life: "life",
   work: "work",
-  wows: "wows",
-  backpack: "info",
-  github: "info",
-  camp: "info",
+  backpack: "stack",
+  camp: "contact",
+};
+
+const navTargets: Record<NavId, string> = {
+  life: "life",
+  work: "work",
+  stack: "backpack",
+  contact: "camp",
 };
 
 export function Navigation() {
@@ -21,7 +26,7 @@ export function Navigation() {
   const [pill, setPill] = useState({ left: 8, width: 86 });
 
   useEffect(() => {
-    const ids = ["life", "work", "wows", "backpack", "github", "camp"];
+    const ids = ["life", "work", "backpack", "camp"];
     const els = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));
@@ -53,7 +58,7 @@ export function Navigation() {
 
   return (
     <nav
-      aria-label="World"
+      aria-label="Portfolio"
       className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-[max(1.1rem,env(safe-area-inset-bottom))]"
     >
       <div className="nav-shell pointer-events-auto flex w-full max-w-[min(100%,42rem)] items-center gap-1 rounded-full px-1.5 py-1.5 sm:px-2">
@@ -68,7 +73,7 @@ export function Navigation() {
             return (
               <a
                 key={item.id}
-                href={`#${item.id === "info" ? "backpack" : item.id}`}
+                href={`#${navTargets[item.id]}`}
                 ref={(node) => {
                   btnRefs.current[item.id] = node;
                 }}
