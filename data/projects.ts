@@ -22,11 +22,11 @@ export const projects: Project[] = [
     title: "Lumma",
     subtitle: "Stablecoin finance app",
     description:
-      "A live product I am building around stablecoin movement: bridge, swap, balances, cross-border send, and yield in one calm interface.",
+      "The current build: stablecoin movement without making users think about five different crypto chores. Bridge, swap, balances, send, yield.",
     highlights: [
-      "Product and backend systems",
-      "Non-custodial flow",
-      "Payments-focused UX",
+      "One place for money movement",
+      "Non-custodial by default",
+      "Built like a product, not a demo",
     ],
     technologies: ["TypeScript", "React", "Vite", "Privy"],
     github: "https://github.com/Krusherk/lumma",

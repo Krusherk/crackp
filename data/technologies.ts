@@ -9,7 +9,7 @@ export const technologies: TechCategory[] = [
   {
     id: "backend",
     label: "Backend",
-    fieldNote: "The main lane: APIs, data, auth, jobs, and the useful boring parts.",
+    fieldNote: "Where I am most at home.",
     items: [
       { name: "Python", note: "Services, scripts, automation, and backend logic." },
       { name: "Node.js", note: "APIs and server-side JavaScript when the stack calls for it." },
@@ -20,7 +20,7 @@ export const technologies: TechCategory[] = [
   {
     id: "frontend",
     label: "Frontend",
-    fieldNote: "Enough interface work to make the product feel clear and usable.",
+    fieldNote: "Enough to make the backend visible and usable.",
     items: [
       { name: "React", note: "Component-driven product interfaces." },
       { name: "Next.js", note: "Full-stack React apps, routing, metadata, and deployment." },
@@ -31,7 +31,7 @@ export const technologies: TechCategory[] = [
   {
     id: "tools",
     label: "Tools",
-    fieldNote: "The practical kit for shipping and maintaining projects.",
+    fieldNote: "The kit around shipping.",
     items: [
       { name: "Git", note: "Version control, branches, reviews, and clean history." },
       { name: "Docker", note: "Repeatable local environments and deployable services." },
@@ -42,7 +42,7 @@ export const technologies: TechCategory[] = [
   {
     id: "learning",
     label: "Learning",
-    fieldNote: "Things I am actively getting better at, no fake expert costume.",
+    fieldNote: "Active reps, not fake mastery.",
     items: [
       { name: "Rust", note: "Systems programming, correctness, and performance thinking." },
       { name: "DevOps", note: "Containers, CI/CD, logs, deployment, and reliability." },

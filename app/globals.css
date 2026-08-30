@@ -239,6 +239,36 @@ img.pixel,
   line-height: 1;
 }
 
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
+  background: rgba(243, 243, 233, 0.1);
+  padding: 0.55rem 0.8rem;
+  color: var(--paper);
+  font-family: var(--font-pixel), ui-monospace, monospace;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 160ms var(--ease-out),
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.hero-link:hover {
+  background: rgba(243, 243, 233, 0.16);
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.hero-link:active {
+  transform: scale(0.97);
+}
+
 /* ------------------------------------------------------------------ */
 /* Grain                                                               */
 /* ------------------------------------------------------------------ */

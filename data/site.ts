@@ -3,7 +3,7 @@ export const site = {
   fullName: "Crack",
   title: "Crack — Backend engineer",
   description:
-    "Backend-focused builder working with Python, TypeScript, Rust, and practical product systems.",
+    "Backend engineer shipping Lumma with Python, TypeScript, and a small pixel-world portfolio.",
   email: "qowiyy@lumma.xyz",
   github: "https://github.com/Krusherk",
   githubHandle: "Krusherk",

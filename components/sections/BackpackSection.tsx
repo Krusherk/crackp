@@ -15,8 +15,8 @@ export function BackpackSection() {
       <div className="relative mx-auto max-w-[78rem] px-6 md:px-10 lg:px-16">
         <SectionHeader
           kicker="Stack"
-          title="Usual Tools"
-          lede="Common app stack. Backend first, frontend capable, learning Rust and DevOps in public."
+          title="In The Pack"
+          lede="The everyday kit: backend tools first, enough frontend to ship the screen, and a few things I am leveling up."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[15rem_1fr]">

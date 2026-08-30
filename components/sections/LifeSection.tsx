@@ -2,10 +2,12 @@ import { art } from "@/data/site";
 import { PixelSparkle } from "@/components/PixelSparkle";
 
 const paths = [
-  { n: "01", href: "#work", title: "Work", hint: "The main thing shipping now." },
-  { n: "02", href: "#backpack", title: "Stack", hint: "The tools I actually use." },
-  { n: "03", href: "#camp", title: "Contact", hint: "Fast ways to reach me." },
+  { href: "#work", title: "Open Work" },
+  { href: "#backpack", title: "Read Stack" },
+  { href: "#camp", title: "Contact" },
 ];
+
+const status = ["Lumma", "Python", "TypeScript", "Rust next"];
 
 export function LifeSection() {
   return (
@@ -33,55 +35,46 @@ export function LifeSection() {
         size={7}
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-[78rem] flex-col justify-between px-6 pb-36 pt-16 md:px-10 lg:px-16">
-        <div className="max-w-xl reveal">
-          <p className="pixel-label text-paper/80">Portfolio · 00</p>
-          <h1 className="display mt-6 text-[clamp(3.2rem,8vw,7.2rem)] text-paper [text-shadow:0_2px_24px_rgba(10,20,16,0.45)]">
-            Hi, I&apos;m Crack
+      <div className="relative z-10 mx-auto grid min-h-[100dvh] max-w-[78rem] content-center gap-10 px-6 py-24 md:px-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:px-16">
+        <div className="reveal max-w-3xl">
+          <p className="pixel-label text-paper/80">Portfolio · save file 01</p>
+          <h1 className="display mt-6 max-w-4xl text-[clamp(4rem,10vw,8.5rem)] text-paper [text-shadow:0_2px_24px_rgba(10,20,16,0.45)]">
+            Crack builds backend things.
           </h1>
-          <p className="italic-lede mt-5 text-[1.2rem] text-paper/90 md:text-[1.45rem] [text-shadow:0_1px_12px_rgba(10,20,16,0.4)]">
-            Backend engineer shipping Lumma. Python and TypeScript now, Rust and DevOps getting sharper every week.
+          <p className="mt-6 max-w-2xl text-[1.15rem] leading-relaxed text-paper/90 md:text-[1.35rem] [text-shadow:0_1px_12px_rgba(10,20,16,0.4)]">
+            Currently working on Lumma, writing mostly Python and TypeScript, and getting better at Rust, deploys, and the parts of software users never see.
           </p>
-        </div>
 
-        <div className="reveal reveal-d2">
-          <div className="mb-8 flex items-center gap-5">
-            <span className="h-px flex-1 bg-paper/25" />
-            <p className="pixel-label text-paper/85">Start here</p>
-            <span className="h-px flex-1 bg-paper/25" />
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3 md:gap-5">
+          <div className="mt-8 flex flex-wrap gap-3">
             {paths.map((p) => (
-              <a
-                key={p.n}
-                href={p.href}
-                className="path-card glass-world group relative flex min-h-[20rem] flex-col overflow-hidden p-6 md:min-h-[24rem] md:p-8"
-              >
-                <div
-                  className="path-bg pointer-events-none absolute inset-0 opacity-40"
-                  style={{
-                    backgroundImage: `url(${art.lifeBg})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    imageRendering: "pixelated",
-                    filter: "saturate(0.7)",
-                  }}
-                />
-                <div className="relative z-10 flex items-start justify-between">
-                  <span className="pixel-label text-paper/80">{p.n}</span>
-                  <span className="path-arrow display text-2xl leading-none text-paper">→</span>
-                </div>
-                <p className="relative z-10 mt-auto max-w-[12rem] text-sm italic text-paper/70">
-                  {p.hint}
-                </p>
-                <h2 className="path-title display relative z-10 mt-3 self-end text-[clamp(2rem,3.4vw,3.1rem)] text-paper">
-                  {p.title}
-                </h2>
+              <a key={p.title} href={p.href} className="hero-link">
+                {p.title}
+                <span aria-hidden>→</span>
               </a>
             ))}
           </div>
         </div>
+
+        <aside className="glass-world reveal reveal-d2 relative overflow-hidden p-5 text-paper lg:self-end">
+          <img
+            src={art.book}
+            alt=""
+            className="pixel absolute right-5 top-5 h-14 w-14 opacity-85"
+            aria-hidden
+          />
+          <p className="pixel-label text-paper/65">Now</p>
+          <ul className="mt-16 space-y-3">
+            {status.map((item) => (
+              <li key={item} className="flex items-center gap-3 border-t border-white/15 pt-3">
+                <span className="h-2 w-2 bg-peach" />
+                <span className="text-[1.05rem] text-paper/90">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-[0.95rem] leading-relaxed text-paper/70">
+            Short site. Real links. No essay wall.
+          </p>
+        </aside>
       </div>
     </section>
   );

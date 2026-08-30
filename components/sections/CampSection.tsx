@@ -34,7 +34,7 @@ export function CampSection() {
           Say Hi
         </h2>
         <p className="italic-lede mt-6 max-w-lg text-[1.3rem] text-paper/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.55)]">
-          For backend work, product ideas, or something weird that needs to ship clean.
+          Send the repo, the rough spec, or the problem. I like starting from the messy version.
         </p>
 
         <div className="mt-14 grid items-end gap-12 lg:grid-cols-[1fr_auto]">

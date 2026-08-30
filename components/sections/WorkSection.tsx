@@ -21,9 +21,9 @@ export function WorkSection() {
 
       <div className="relative mx-auto max-w-[78rem] px-6 md:px-10 lg:px-16">
         <SectionHeader
-          kicker="Selected work"
+          kicker="Current build"
           title="Lumma"
-          lede="The main thing shipping right now. One focused project beats a wall of half-real cards."
+          lede="The only project I am putting up front right now. Better one real build than five placeholder cards."
         />
 
         <div className="mt-14">
