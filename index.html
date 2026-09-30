@@ -165,7 +165,7 @@
     .project-meta a { color: var(--fg-subtle); }
     .project-meta a:hover { color: var(--accent); }
 
-    .blog-item { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); position: relative; }
+.blog-item { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); position: relative; }
     .blog-item::before {
       content: "";
       position: absolute;
@@ -177,34 +177,22 @@
     }
     .blog-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .blog-item:last-child::before { display: none; }
-    .blog-image-wrap {
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 18px;
-      background: linear-gradient(135deg, var(--border) 0%, var(--bg-deep) 100%);
-      position: relative;
-    }
-    .blog-image-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.3) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .blog-image-wrap:hover::after { opacity: 1; }
-    .blog-image {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .blog-image-wrap:hover .blog-image { transform: scale(1.03); }
     .blog-date { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 12px; }
     .blog-title { font-size: 1.125rem; font-weight: 600; line-height: 1.35; margin-bottom: 12px; letter-spacing: -0.01em; }
-    .blog-title a { color: var(--fg); }
-    .blog-title a:hover { color: var(--accent); }
+    .blog-title-link {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      color: var(--fg);
+    }
+    .blog-title-link:hover { color: var(--accent); }
+    .external-icon {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--fg-subtle);
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+    .blog-title-link:hover .external-icon { color: var(--accent); transform: translateX(4px); }
     .blog-excerpt { color: var(--fg-muted); font-size: 0.875rem; line-height: 1.75; max-width: 580px; }
 
     .contact-links { display: flex; flex-direction: column; gap: 12px; max-width: 440px; }
@@ -284,10 +272,12 @@
         <p class="section-label">Writing</p>
         <article class="blog-item">
           <time class="blog-date" datetime="2026-09-30">Sep 2026</time>
-          <a href="https://x.com/0xqowiyy/status/2078825587062325447" target="_blank" rel="noopener noreferrer" class="blog-image-wrap">
-            <img src="https://pbs.twimg.com/media/Gy8vqZkXwAAvq7F?format=jpg&name=large" alt="Curiosity: A Tool for Growth" class="blog-image" loading="lazy">
-          </a>
-          <h3 class="blog-title"><a href="https://x.com/0xqowiyy/status/2078825587062325447" target="_blank" rel="noopener noreferrer">Curiosity: A Tool for Growth</a></h3>
+          <h3 class="blog-title">
+            <a href="https://x.com/0xqowiyy/status/2078825587062325447" target="_blank" rel="noopener noreferrer" class="blog-title-link">
+              Curiosity: A Tool for Growth
+              <span class="external-icon" aria-hidden="true">→</span>
+            </a>
+          </h3>
           <p class="blog-excerpt">Humans have one life, and cats have nine. Curiosity kills the cat — that's fine, it has nine lives. We have one. Yet we started with that trait. Babies are immensely curious. Somewhere along the line, that curiosity dropped. Rekindling it means observing more, practicing more, learning not for a job but because you're curious about how, why, or who.</p>
         </article>
       </section>
