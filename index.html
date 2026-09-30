@@ -10,12 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0b;
+      --bg: #080809;
+      --bg-deep: #040405;
       --fg: #fafafa;
       --fg-muted: #a1a1aa;
       --fg-subtle: #71717a;
       --border: #27272a;
       --accent: #e4e4e7;
+      --accent-dim: #71717a;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,121 +36,212 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    body::before {
+    /* Layered noise + subtle radial glow */
+    body::before,
+    body::after {
       content: "";
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.035;
       pointer-events: none;
+      z-index: -1;
+    }
+    body::before {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.06;
+    }
+    body::after {
+      background: radial-gradient(ellipse 60% 40% at 50% -10%, rgba(228,228,231,0.025), transparent 60%),
+                  radial-gradient(ellipse 40% 30% at 80% 100%, rgba(228,228,231,0.015), transparent 50%);
     }
 
     a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
     a:hover { color: var(--accent); }
     a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
-    .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 700px; margin: 0 auto; padding: 0 28px; }
 
-    header { padding: 100px 0 50px; }
+    header { padding: 110px 0 50px; position: relative; }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 28px;
+      right: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      opacity: 0.4;
+    }
 
     .hero-greeting {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
       color: var(--fg-subtle);
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 16px;
+      letter-spacing: 0.25em;
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(3rem, 10vw, 6rem);
+      font-size: clamp(3.25rem, 11vw, 6.5rem);
       font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.04em;
-      margin-bottom: 20px;
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      margin-bottom: 22px;
+      background: linear-gradient(180deg, var(--fg) 0%, var(--fg-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .tagline {
-      font-size: clamp(1.125rem, 3vw, 1.625rem);
+      font-size: clamp(1.125rem, 3.2vw, 1.75rem);
       color: var(--fg-muted);
       font-weight: 400;
-      max-width: 560px;
-      line-height: 1.5;
+      max-width: 580px;
+      line-height: 1.45;
     }
 
-    main { padding: 60px 0 120px; }
+    main { padding: 70px 0 140px; }
 
-    section { margin-bottom: 100px; }
+    section { margin-bottom: 110px; }
 
     .section-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       color: var(--fg-subtle);
       text-transform: uppercase;
-      letter-spacing: 0.25em;
-      margin-bottom: 24px;
+      letter-spacing: 0.3em;
+      margin-bottom: 28px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-label::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
     }
 
-    .about-text { max-width: 600px; }
-    .about-text p { color: var(--fg-muted); font-size: 1.0625rem; line-height: 1.8; margin-bottom: 18px; }
+    .about-text { max-width: 620px; }
+    .about-text p { color: var(--fg-muted); font-size: 1.0625rem; line-height: 1.85; margin-bottom: 18px; }
     .about-text p:last-child { margin-bottom: 0; }
 
-    .experience-item { padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .experience-item { padding-bottom: 32px; border-bottom: 1px solid var(--border); position: relative; }
+    .experience-item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--border), transparent);
+    }
     .exp-role { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
     .exp-company { color: var(--fg-muted); margin-top: 4px; }
     .exp-company a { color: var(--fg-muted); }
     .exp-company a:hover { color: var(--accent); }
-    .exp-desc { color: var(--fg-muted); margin-top: 12px; font-size: 0.9375rem; line-height: 1.7; }
+    .exp-desc { color: var(--fg-muted); margin-top: 14px; font-size: 0.9375rem; line-height: 1.75; }
 
-    .project { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .project { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); position: relative; }
+    .project::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--border), transparent);
+    }
     .project:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .project-name { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; }
-    .project-desc { color: var(--fg-muted); font-size: 0.9375rem; margin-bottom: 14px; line-height: 1.7; }
+    .project:last-child::before { display: none; }
+    .project-name { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .project-desc { color: var(--fg-muted); font-size: 0.9375rem; margin-bottom: 16px; line-height: 1.75; }
     .project-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--fg-subtle); letter-spacing: 0.02em; }
     .project-meta a { color: var(--fg-subtle); }
     .project-meta a:hover { color: var(--accent); }
 
-    .blog-item { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .blog-item { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); position: relative; }
+    .blog-item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--border), transparent);
+    }
     .blog-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .blog-item:last-child::before { display: none; }
     .blog-image-wrap {
       display: block;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 16px;
-      background: var(--border);
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--border) 0%, var(--bg-deep) 100%);
+      position: relative;
     }
+    .blog-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.3) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .blog-image-wrap:hover::after { opacity: 1; }
     .blog-image {
       width: 100%;
       aspect-ratio: 16/9;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.5s ease;
     }
-    .blog-image-wrap:hover .blog-image { transform: scale(1.02); }
-    .blog-date { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; }
-    .blog-title { font-size: 1.125rem; font-weight: 600; line-height: 1.35; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .blog-image-wrap:hover .blog-image { transform: scale(1.03); }
+    .blog-date { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 12px; }
+    .blog-title { font-size: 1.125rem; font-weight: 600; line-height: 1.35; margin-bottom: 12px; letter-spacing: -0.01em; }
     .blog-title a { color: var(--fg); }
     .blog-title a:hover { color: var(--accent); }
-    .blog-excerpt { color: var(--fg-muted); font-size: 0.875rem; line-height: 1.7; }
+    .blog-excerpt { color: var(--fg-muted); font-size: 0.875rem; line-height: 1.75; max-width: 580px; }
 
-    .contact-links { display: flex; flex-direction: column; gap: 10px; max-width: 420px; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; max-width: 440px; }
     .contact-link {
       color: var(--fg-muted);
       font-size: 1rem;
-      padding: 8px 0;
+      padding: 10px 0;
       border-bottom: 1px solid transparent;
-      transition: color 0.15s ease, border-color 0.15s ease;
+      transition: color 0.15s ease, border-color 0.15s ease, padding-left 0.15s ease;
     }
-    .contact-link:hover { color: var(--fg); border-color: var(--border); }
+    .contact-link:hover { color: var(--fg); border-color: var(--border); padding-left: 8px; }
     .contact-link:last-child { border-bottom: none; }
 
-    footer { padding: 50px 0; border-top: 1px solid var(--border); }
+    footer { padding: 60px 0; border-top: 1px solid var(--border); position: relative; }
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 28px;
+      right: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      opacity: 0.3;
+    }
     .footer-text { font-size: 0.8125rem; color: var(--fg-subtle); text-align: center; }
 
     @media (max-width: 640px) {
-      header { padding: 70px 0 35px; }
-      main { padding: 40px 0 80px; }
-      section { margin-bottom: 70px; }
-      .blog-image-wrap { border-radius: 8px; }
+      .container { padding: 0 20px; }
+      header { padding: 80px 0 35px; }
+      header::after { left: 20px; right: 20px; }
+      main { padding: 50px 0 100px; }
+      section { margin-bottom: 80px; }
+      .experience-item::before,
+      .project::before,
+      .blog-item::before { display: none; }
+      .blog-image-wrap { border-radius: 10px; }
+      footer::before { left: 20px; right: 20px; }
     }
   </style>
 </head>
@@ -192,10 +285,10 @@
         <article class="blog-item">
           <time class="blog-date" datetime="2026-09-30">Sep 2026</time>
           <a href="https://x.com/0xqowiyy/status/2078825587062325447" target="_blank" rel="noopener noreferrer" class="blog-image-wrap">
-            <img src="https://pbs.twimg.com/media/Gy8vqZkXwAAvq7F?format=jpg&name=large" alt="" class="blog-image" loading="lazy">
+            <img src="https://pbs.twimg.com/media/Gy8vqZkXwAAvq7F?format=jpg&name=large" alt="Curiosity: A Tool for Growth" class="blog-image" loading="lazy">
           </a>
           <h3 class="blog-title"><a href="https://x.com/0xqowiyy/status/2078825587062325447" target="_blank" rel="noopener noreferrer">Curiosity: A Tool for Growth</a></h3>
-          <p class="blog-excerpt">Why curiosity isn't just a trait — it's a practice. How asking better questions changes what you build and how you think.</p>
+          <p class="blog-excerpt">Humans have one life, and cats have nine. Curiosity kills the cat — that's fine, it has nine lives. We have one. Yet we started with that trait. Babies are immensely curious. Somewhere along the line, that curiosity dropped. Rekindling it means observing more, practicing more, learning not for a job but because you're curious about how, why, or who.</p>
         </article>
       </section>
 
