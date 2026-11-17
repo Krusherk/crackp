@@ -4,296 +4,477 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Crack — Software Engineer. Founder of Lumma. Trying things until something clicks.">
+  <meta property="og:title" content="Crack — SE">
+  <meta property="og:description" content="Software Engineer · Founder @ Lumma. Trying things until something clicks.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crack.is-a.dev">
+  <meta property="og:image" content="https://crack.is-a.dev/mascot-hero.svg">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Crack — SE</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232B5CE6'/%3E%3Cellipse cx='50' cy='55' rx='26' ry='30' fill='white'/%3E%3Ccircle cx='42' cy='50' r='3.5' fill='%23111'/%3E%3Ccircle cx='58' cy='50' r='3.5' fill='%23111'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #080809;
-      --bg-deep: #040405;
-      --fg: #fafafa;
-      --fg-muted: #a1a1aa;
-      --fg-subtle: #71717a;
-      --border: #27272a;
-      --accent: #e4e4e7;
-      --accent-dim: #71717a;
+      --blue: #2B5CE6;
+      --blue-deep: #1E47C0;
+      --bg: #FFFFFF;
+      --ink: #111113;
+      --muted: #5B5B66;
+      --line: #E7E7EC;
+      --pink: #FF4FA8;
+      --orange: #FF7A1F;
+      --teal: #1FBFAE;
+      --yellow: #FFA826;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
     }
-
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Space Grotesk', system-ui, sans-serif;
       background: var(--bg);
-      color: var(--fg);
-      line-height: 1.7;
-      min-height: 100vh;
+      color: var(--ink);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
-
-    /* Layered noise + subtle radial glow */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-    }
-    body::before {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      opacity: 0.06;
-    }
-    body::after {
-      background: radial-gradient(ellipse 60% 40% at 50% -10%, rgba(228,228,231,0.025), transparent 60%),
-                  radial-gradient(ellipse 40% 30% at 80% 100%, rgba(228,228,231,0.015), transparent 50%);
-    }
-
-    a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
-    a:hover { color: var(--accent); }
-    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-    .container { max-width: 700px; margin: 0 auto; padding: 0 28px; }
-
-    header { padding: 110px 0 50px; position: relative; }
-
-    header::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 28px;
-      right: 28px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      opacity: 0.4;
-    }
-
-    .hero-greeting {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--fg-subtle);
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(3.25rem, 11vw, 6.5rem);
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .display {
       font-weight: 700;
-      line-height: 0.98;
-      letter-spacing: -0.045em;
-      margin-bottom: 22px;
-      background: linear-gradient(180deg, var(--fg) 0%, var(--fg-muted) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .tagline {
-      font-size: clamp(1.125rem, 3.2vw, 1.75rem);
-      color: var(--fg-muted);
-      font-weight: 400;
-      max-width: 580px;
-      line-height: 1.45;
-    }
-
-    main { padding: 70px 0 140px; }
-
-    section { margin-bottom: 110px; }
-
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.55rem;
-      color: var(--fg-subtle);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
       text-transform: uppercase;
-      letter-spacing: 0.3em;
-      margin-bottom: 28px;
+    }
+    .hero {
       position: relative;
-      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
-    .section-label::after {
-      content: "";
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 40px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.5;
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 34px 44px 0;
+      position: relative;
+      z-index: 3;
     }
-
-    .about-text { max-width: 620px; }
-    .about-text p { color: var(--fg-muted); font-size: 1.0625rem; line-height: 1.85; margin-bottom: 18px; }
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .experience-item { padding-bottom: 32px; border-bottom: 1px solid var(--border); position: relative; }
-    .experience-item::before {
-      content: "";
-      position: absolute;
-      left: -28px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(180deg, var(--border), transparent);
-    }
-    .exp-role { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
-    .exp-company { color: var(--fg-muted); margin-top: 4px; }
-    .exp-company a { color: var(--fg-muted); }
-    .exp-company a:hover { color: var(--accent); }
-    .exp-desc { color: var(--fg-muted); margin-top: 14px; font-size: 0.9375rem; line-height: 1.75; }
-
-    .project { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); position: relative; }
-    .project::before {
-      content: "";
-      position: absolute;
-      left: -28px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(180deg, var(--border), transparent);
-    }
-    .project:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .project:last-child::before { display: none; }
-    .project-name { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 12px; }
-    .project-desc { color: var(--fg-muted); font-size: 0.9375rem; margin-bottom: 16px; line-height: 1.75; }
-    .project-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--fg-subtle); letter-spacing: 0.02em; }
-    .project-meta a { color: var(--fg-subtle); }
-    .project-meta a:hover { color: var(--accent); }
-
-.blog-item { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); position: relative; }
-    .blog-item::before {
-      content: "";
-      position: absolute;
-      left: -28px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(180deg, var(--border), transparent);
-    }
-    .blog-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .blog-item:last-child::before { display: none; }
-    .blog-date { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 12px; }
-    .blog-title { font-size: 1.125rem; font-weight: 600; line-height: 1.35; margin-bottom: 12px; letter-spacing: -0.01em; }
-    .blog-title-link {
+    .logo-chip {
       display: inline-flex;
-      align-items: baseline;
-      gap: 8px;
-      color: var(--fg);
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
     }
-    .blog-title-link:hover { color: var(--accent); }
-    .external-icon {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--fg-subtle);
-      transition: color 0.15s ease, transform 0.15s ease;
+    .logo-dot {
+      width: 26px; height: 26px;
+      background: #fff;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    .blog-title-link:hover .external-icon { color: var(--accent); transform: translateX(4px); }
-    .blog-excerpt { color: var(--fg-muted); font-size: 0.875rem; line-height: 1.75; max-width: 580px; }
-
-    .contact-links { display: flex; flex-direction: column; gap: 12px; max-width: 440px; }
-    .contact-link {
-      color: var(--fg-muted);
-      font-size: 1rem;
-      padding: 10px 0;
-      border-bottom: 1px solid transparent;
-      transition: color 0.15s ease, border-color 0.15s ease, padding-left 0.15s ease;
+    .logo-dot::before {
+      content: "";
+      width: 12px; height: 15px;
+      background: var(--blue);
+      border-radius: 6px 6px 7px 7px;
     }
-    .contact-link:hover { color: var(--fg); border-color: var(--border); padding-left: 8px; }
-    .contact-link:last-child { border-bottom: none; }
-
-    footer { padding: 60px 0; border-top: 1px solid var(--border); position: relative; }
-    footer::before {
+    .hero-title {
+      text-align: right;
+      font-size: clamp(3rem, 8.5vw, 6.75rem);
+      line-height: 0.92;
+    }
+    .hero-title .spark { display: inline-block; transform: translateY(-0.35em); margin-right: 0.1em; font-size: 0.5em; }
+    .hero-tagblock { text-align: right; margin-top: 18px; position: relative; z-index: 3; }
+    .hero-tagblock .lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.9; }
+    .hero-tagblock .sub { font-family: 'JetBrains Mono', monospace; font-size: 0.5rem; letter-spacing: 0.08em; opacity: 0.6; margin-top: 4px; }
+    .hero-stage {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 420px;
+    }
+    .hero-mascot {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: min(78vh, 640px);
+      z-index: 2;
+      user-select: none;
+      pointer-events: none;
+      mix-blend-mode: normal;
+    }
+    .hero-words {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-words span {
+      position: absolute;
+      font-weight: 700;
+      color: rgba(255,255,255,0.28);
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+    .hw-1 { left: 6%;  bottom: 18%; }
+    .hw-2 { right: 8%; bottom: 34%; }
+    .hw-3 { left: 16%; bottom: 42%; font-size: clamp(1.4rem, 3.4vw, 2.4rem) !important; }
+    .confetti { position: absolute; z-index: 3; pointer-events: none; }
+    .dot { border-radius: 50%; }
+    .c1 { width: 14px; height: 14px; background: var(--yellow); left: 12%; top: 24%; }
+    .c2 { width: 10px; height: 10px; background: var(--pink); right: 20%; top: 38%; }
+    .c3 { width: 16px; height: 16px; background: #fff; opacity: 0.5; right: 12%; bottom: 26%; }
+    .c4 { width: 12px; height: 12px; background: var(--teal); left: 22%; bottom: 20%; }
+    .sparkle { color: #fff; font-size: 1.4rem; opacity: 0.8; }
+    .s1 { left: 40%; top: 12%; }
+    .s2 { right: 30%; bottom: 12%; font-size: 1rem; }
+    .browser-chip {
+      position: absolute;
+      left: 44px;
+      top: 26%;
+      z-index: 3;
+      background: #fff;
+      border-radius: 14px 14px 0 0;
+      padding: 10px 14px 12px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      transform: rotate(-3deg);
+      animation: float 5s ease-in-out infinite;
+    }
+    .browser-chip .dots { display: flex; gap: 5px; }
+    .browser-chip .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); opacity: 0.85; }
+    .float-cube {
+      position: absolute;
+      width: 46px; height: 46px;
+      background: var(--pink);
+      border-radius: 10px;
+      right: 26%;
+      top: 20%;
+      z-index: 3;
+      transform: rotate(12deg);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+      animation: float 6s ease-in-out infinite reverse;
+    }
+    .float-cube::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 28px;
-      right: 28px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      opacity: 0.3;
+      inset: 12px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.35);
     }
-    .footer-text { font-size: 0.8125rem; color: var(--fg-subtle); text-align: center; }
-
-    @media (max-width: 640px) {
-      .container { padding: 0 20px; }
-      header { padding: 80px 0 35px; }
-      header::after { left: 20px; right: 20px; }
-      main { padding: 50px 0 100px; }
-      section { margin-bottom: 80px; }
-      .experience-item::before,
-      .project::before,
-      .blog-item::before { display: none; }
-      .blog-image-wrap { border-radius: 10px; }
-      footer::before { left: 20px; right: 20px; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+      50% { transform: translateY(-12px) rotate(var(--rot, 0deg)); }
+    }
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 44px 26px;
+      position: relative;
+      z-index: 3;
+    }
+    .hero-role { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; }
+    .hero-scroll { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
+    .marquee {
+      background: var(--ink);
+      color: #fff;
+      overflow: hidden;
+      padding: 14px 0;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: scroll 28s linear infinite;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+    .marquee-track b { color: var(--yellow); font-weight: 500; margin: 0 18px; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    section { padding: 110px 44px; }
+    .wrap { max-width: 1080px; margin: 0 auto; }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 30px;
+    }
+    .kicker::before { content: ""; width: 34px; height: 2px; background: var(--blue); }
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 70px; align-items: center; }
+    .about-hello {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      line-height: 1.02;
+    }
+    .about-hello .arrow { color: var(--blue); display: inline-block; transform: translateY(0.05em); }
+    .about-hello .boxed {
+      color: var(--blue);
+      box-shadow: inset 0 0 0 3px var(--blue);
+      border-radius: 6px;
+      padding: 0 14px;
+      display: inline-block;
+      transform: rotate(-2deg);
+    }
+    .about-copy { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-top: 26px; max-width: 520px; }
+    .about-copy strong { color: var(--ink); font-weight: 600; }
+    .about-mascot { width: 100%; max-width: 420px; justify-self: center; user-select: none; }
+    .video { background: var(--blue); color: #fff; }
+    .video .kicker { color: #fff; }
+    .video .kicker::before { background: #fff; }
+    .video-frame {
+      margin-top: 14px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--blue-deep);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+    .video-frame video, .video-frame iframe { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-empty {
+      text-align: center;
+      color: rgba(255,255,255,0.75);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .video-empty .play {
+      width: 74px; height: 74px;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.5rem;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.25);
+    }
+    .projects { background: var(--bg); }
+    .project-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .pcard {
+      border: 1.5px solid var(--line);
+      border-radius: 22px;
+      padding: 34px 32px 30px;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      background: #fff;
+    }
+    .pcard:hover {
+      transform: translateY(-6px);
+      border-color: var(--blue);
+      box-shadow: 0 24px 50px rgba(43,92,230,0.14);
+    }
+    .pcard .tag {
+      position: absolute;
+      top: -13px;
+      left: 28px;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+    .pcard h3 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .pcard p { color: var(--muted); font-size: 0.98rem; line-height: 1.75; }
+    .pcard .meta {
+      margin-top: 22px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .pcard .meta a { color: var(--blue); font-weight: 500; }
+    .pcard .meta a:hover { text-decoration: underline; }
+    .writing { background: var(--ink); color: #fff; }
+    .writing .kicker { color: var(--yellow); }
+    .writing .kicker::before { background: var(--yellow); }
+    .witem {
+      display: block;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+      padding: 30px 4px;
+      transition: padding-left 0.2s ease;
+    }
+    .witem:hover { padding-left: 18px; }
+    .witem .date { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .witem h3 { font-size: 1.5rem; font-weight: 600; margin: 8px 0 6px; letter-spacing: -0.01em; }
+    .witem h3 span { color: var(--yellow); display: inline-block; margin-left: 10px; transition: transform 0.2s ease; }
+    .witem:hover h3 span { transform: translateX(6px); }
+    .witem p { color: rgba(255,255,255,0.65); font-size: 0.92rem; max-width: 640px; line-height: 1.7; }
+    .contact { background: var(--blue); color: #fff; text-align: center; padding: 130px 44px 120px; position: relative; overflow: hidden; }
+    .contact .kicker { justify-content: center; color: #fff; }
+    .contact .kicker::before { background: #fff; }
+    .contact-title { font-size: clamp(2.8rem, 7.5vw, 5.5rem); margin-bottom: 18px; }
+    .contact-sub { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 46px; }
+    .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+    .contact-links a {
+      background: #fff;
+      color: var(--ink);
+      font-weight: 600;
+      padding: 15px 30px;
+      border-radius: 999px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.15);
+    }
+    .contact-links a:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0,0,0,0.22); }
+    .contact-links a.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.6); }
+    .contact .c-blob {
+      position: absolute;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      top: -120px; left: -80px;
+    }
+    .contact .c-blob2 { top: auto; left: auto; bottom: -140px; right: -100px; width: 420px; height: 420px; }
+    footer { background: var(--blue); color: rgba(255,255,255,0.65); text-align: center; padding: 0 44px 34px; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    @media (max-width: 860px) {
+      section { padding: 80px 24px; }
+      .hero-top, .hero-bottom { padding-left: 24px; padding-right: 24px; }
+      .browser-chip { left: 24px; }
+      .float-cube { right: 14%; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-mascot { max-width: 300px; }
+      .project-cards { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(2.6rem, 12vw, 4.5rem); }
+      .contact { padding: 90px 24px 80px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <p class="hero-greeting">Hey</p>
-      <h1>Crack <span aria-hidden="true">—</span> SE</h1>
-      <p class="tagline">trying things until something clicks.</p>
-    </header>
-
-    <main>
-      <section id="about">
-        <p class="section-label">About</p>
-        <div class="about-text">
-          <p>I'm usually working on something, breaking something, or thinking about what to build next.</p>
-          <p>I like products with a point of view and interfaces that don't get in the way.</p>
-        </div>
-      </section>
-
-      <section id="experience">
-        <p class="section-label">Experience</p>
-        <article class="experience-item">
-          <div class="exp-role">Founder</div>
-          <div class="exp-company">Lumma — <a href="https://lumma.xyz" target="_blank" rel="noopener noreferrer">lumma.xyz</a></div>
-          <p class="exp-desc">Building agentic payroll infrastructure. Automating compliance, filings, and payments for modern companies.</p>
-        </article>
-      </section>
-
-      <section id="projects">
-        <p class="section-label">Projects</p>
-        <article class="project">
-          <h3 class="project-name">Lumma</h3>
-          <p class="project-desc">An agentic payroll provider and infrastructure platform. Automating compliance, filings, and payments for modern companies.</p>
-          <p class="project-meta">TypeScript · Node.js · PostgreSQL · <a href="https://lumma.xyz" target="_blank" rel="noopener noreferrer">lumma.xyz</a></p>
-        </article>
-      </section>
-
-      <section id="writing">
-        <p class="section-label">Writing</p>
-        <article class="blog-item">
-          <time class="blog-date" datetime="2026-09-30">Sep 2026</time>
-          <h3 class="blog-title">
-            <a href="https://x.com/0xqowiyy/status/2078825587062325447" target="_blank" rel="noopener noreferrer" class="blog-title-link">
-              Curiosity: A Tool for Growth
-              <span class="external-icon" aria-hidden="true">→</span>
-            </a>
-          </h3>
-          <p class="blog-excerpt">Humans have one life, and cats have nine. Curiosity kills the cat — that's fine, it has nine lives. We have one. Yet we started with that trait. Babies are immensely curious. Somewhere along the line, that curiosity dropped. Rekindling it means observing more, practicing more, learning not for a job but because you're curious about how, why, or who.</p>
-        </article>
-      </section>
-
-      <section id="contact">
-        <p class="section-label">Contact</p>
-        <div class="contact-links">
-          <a href="https://x.com/0xqowiyy" target="_blank" rel="noopener noreferrer" class="contact-link">X — @0xqowiyy</a>
-          <a href="mailto:qowiyy@lumma.xyz" class="contact-link">Email — qowiyy@lumma.xyz</a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p class="footer-text">© 2026 Crack</p>
-    </footer>
+  <div class="hero">
+    <div class="hero-top">
+      <div class="logo-chip"><span class="logo-dot"></span> Crack</div>
+      <h1 class="hero-title display"><span class="spark">✦</span>Create<br>Together</h1>
+      <div class="hero-tagblock">
+        <div class="lbl">Founder &amp; Engineer</div>
+        <div class="sub">lumma.xyz · crack.is-a.dev</div>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="hero-words" aria-hidden="true">
+        <span class="hw-1">Ship</span>
+        <span class="hw-2">Break</span>
+        <span class="hw-3">Rebuild</span>
+      </div>
+      <div class="browser-chip" aria-hidden="true"><div class="dots"><i></i><i></i><i></i></div></div>
+      <div class="float-cube" aria-hidden="true"></div>
+      <img class="hero-mascot" src="mascot-hero.svg" alt="Crack mascot">
+      <div class="confetti dot c1"></div>
+      <div class="confetti dot c2"></div>
+      <div class="confetti dot c3"></div>
+      <div class="confetti dot c4"></div>
+      <div class="confetti sparkle s1">✦</div>
+      <div class="confetti sparkle s2">✦</div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-role">Software Engineer · Founder @ Lumma</div>
+      <div class="hero-scroll">Scroll ↓</div>
+    </div>
   </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Trying things until something clicks <b>✦</b> Building Lumma <b>✦</b> Breaking &amp; rebuilding <b>✦</b> Products with a point of view <b>✦</b>&nbsp;</span>
+      <span>Trying things until something clicks <b>✦</b> Building Lumma <b>✦</b> Breaking &amp; rebuilding <b>✦</b> Products with a point of view <b>✦</b>&nbsp;</span>
+    </div>
+  </div>
+  <section class="about">
+    <div class="wrap about-grid">
+      <div>
+        <p class="kicker">About</p>
+        <h2 class="about-hello display">
+          Hello <span class="arrow">→</span><br>
+          <span class="boxed">Crack</span> is here
+        </h2>
+        <p class="about-copy">
+          I'm usually <strong>building something</strong>, <strong>breaking something</strong>, or thinking about what to build next.
+          I like products with a point of view and interfaces that don't get in the way.
+        </p>
+      </div>
+      <img class="about-mascot" src="mascot-works.svg" alt="Mascot holding a tablet">
+    </div>
+  </section>
+  <section class="video">
+    <div class="wrap">
+      <p class="kicker">Featured</p>
+      <div class="video-frame" id="video-slot">
+        <div class="video-empty">
+          <div class="play">▶</div>
+          Video coming soon
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="projects">
+    <div class="wrap">
+      <p class="kicker">Projects</p>
+      <div class="project-cards">
+        <article class="pcard">
+          <span class="tag">Founder</span>
+          <h3>Lumma</h3>
+          <p>An agentic payroll provider and infrastructure platform. Automating compliance, filings, and payments for modern companies.</p>
+          <div class="meta"><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span><a href="https://lumma.xyz" target="_blank" rel="noopener noreferrer">lumma.xyz →</a></div>
+        </article>
+        <article class="pcard">
+          <span class="tag">Open Source</span>
+          <h3>take</h3>
+          <p>A TypeScript project — fast, focused tooling built the way I like my interfaces: nothing in the way.</p>
+          <div class="meta"><span>TypeScript</span><a href="https://github.com/Krusherk/take" target="_blank" rel="noopener noreferrer">github.com/Krusherk/take →</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="writing">
+    <div class="wrap">
+      <p class="kicker">Writing</p>
+      <a class="witem" href="https://x.com/0xqowiyy/status/2078825587062325447" target="_blank" rel="noopener noreferrer">
+        <div class="date">Sep 2026</div>
+        <h3>Curiosity: A Tool for Growth <span>→</span></h3>
+        <p>Humans have one life, and cats have nine. Curiosity kills the cat — that's fine, it has nine lives. We have one. Yet we started with that trait…</p>
+      </a>
+    </div>
+  </section>
+  <section class="contact">
+    <div class="c-blob"></div>
+    <div class="c-blob c-blob2"></div>
+    <p class="kicker">Contact</p>
+    <h2 class="contact-title display">Let's build<br>something</h2>
+    <p class="contact-sub">Reach out — I answer everything.</p>
+    <div class="contact-links">
+      <a href="https://x.com/0xqowiyy" target="_blank" rel="noopener noreferrer">X — @0xqowiyy</a>
+      <a href="https://github.com/Krusherk" target="_blank" rel="noopener noreferrer">GitHub — Krusherk</a>
+      <a href="mailto:qowiyy@lumma.xyz" class="ghost">qowiyy@lumma.xyz</a>
+    </div>
+  </section>
+  <footer>© 2026 Crack — crack.is-a.dev</footer>
 </body>
 </html>
